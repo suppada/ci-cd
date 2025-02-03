@@ -1,5 +1,4 @@
 name: Maven CI/CD
-
 on:
   push:
     branches: [ main, develop ]
