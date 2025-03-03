@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    uses: suppada/java-app/.github/workflows/maven_build.yml@main
+    uses: suppada/java-app/.github/workflows/maven_build.yml@develop
     with:
       java_version: '21'
       maven_goals: 'package'
