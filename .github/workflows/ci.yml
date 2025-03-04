@@ -14,18 +14,19 @@ jobs:
     with:
       java_version: '21'
       enable_release: true
+      tag_name: 'latest-build'
     permissions:
       contents: write
       packages: read
   codeql_analysis:
-    needs: maven_build  # Ensures CodeQL analysis runs after docker_build
+    needs: maven_build
     uses: suppada/java-app/.github/workflows/codeql_analysis.yml@main
     with:
       maven_build_status: ${{ needs.maven_build.result }}
     if: ${{ needs.maven_build.result == 'success' }}
     permissions:
-      security-events: write  # Allowing write access to security events in the calling workflow
-      actions: read  # Allowing read access to actions in the calling workflow
+      security-events: write # Allowing write access to security events in the calling workflow
+      actions: read         # Allowing read access to actions in the calling workflow
       contents: read
   docker_build:
     needs: codeql_analysis
@@ -34,5 +35,5 @@ jobs:
       image_name: ${{ github.repository }}
       registry: ghcr.io
     permissions:
-      contents: read  
-      packages: write  # Passing status from the Maven build job
+      contents: read
+      packages: write
