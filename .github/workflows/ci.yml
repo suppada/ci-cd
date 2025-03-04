@@ -21,6 +21,10 @@ jobs:
     needs: maven_build  # Ensures CodeQL analysis runs after docker_build
     uses: suppada/java-app/.github/workflows/codeql_analysis.yml@main
     if: ${{ needs.maven_build.result }}
+    permissions:
+      security-events: write  # Allowing write access to security events in the calling workflow
+      actions: read  # Allowing read access to actions in the calling workflow
+      contents: read
   docker_build:
     needs: codeql_analysis
     uses: suppada/java-app/.github/workflows/docker_build.yml@main
