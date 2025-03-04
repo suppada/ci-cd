@@ -34,7 +34,7 @@ jobs:
     with:
       image_name: ${{ github.repository }}
       registry: ghcr.io
-      artifact_filename: 'maven'  # Name of the artifact (without extension)
+      artifact_filename: 'sample-app'  # Name of the artifact (without extension)
       artifact_extension: '.war'
     permissions:
       contents: read
