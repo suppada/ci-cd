@@ -13,3 +13,5 @@ jobs:
     with:
       java_version: '21'
       enable_release: true
+    permissions:
+      contents: write
