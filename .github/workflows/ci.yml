@@ -1,17 +1,16 @@
-name: Maven Build
+name: CI Pipeline
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ develop ]
+    branches:
+      - develop
 
 jobs:
   build:
     uses: suppada/java-app/.github/workflows/maven_build.yml@main
     with:
       java_version: '21'
-      maven_goals: 'package'
       enable_release: true
-    secrets:
-      GITHUB_TOKEN: ${{ secrets.TOKEN }}
