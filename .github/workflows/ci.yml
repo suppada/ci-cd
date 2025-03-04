@@ -16,12 +16,16 @@ jobs:
     permissions:
       contents: write
       packages: read
+  codeql_analysis:
+    needs: maven_build  # Ensures CodeQL analysis runs after docker_build
+    uses: suppada/java-app/.github/workflows/codeql_analysis.yml@main
+    if: ${{ needs.maven_build.result }}
   docker_build:
-    needs: maven_build
+    needs: codeql_analysis
     uses: suppada/java-app/.github/workflows/docker_build.yml@main
     with:
       image_name: ${{ github.repository }}
       registry: ghcr.io
     permissions:
       contents: read  
-      packages: write
+      packages: write  # Passing status from the Maven build job
