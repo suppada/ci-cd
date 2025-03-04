@@ -8,7 +8,7 @@ on:
     branches:
       - develop
 jobs:
-  build:
+  maven_build:
     uses: suppada/java-app/.github/workflows/maven_build.yml@main
     with:
       java_version: '21'
@@ -16,6 +16,7 @@ jobs:
     permissions:
       contents: write
   docker_build:
+    needs: maven_build
     uses: suppada/java-app/.github/workflows/docker_build.yml@main
     with:
       image_name: ${{ github.repository }}
