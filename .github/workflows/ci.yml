@@ -8,6 +8,7 @@ on:
     branches:
       - develop
 
+
 jobs:
   maven_build:
     uses: suppada/java-app/.github/workflows/maven_build.yml@main
