@@ -1,9 +1,5 @@
-FROM openjdk:8-jre-alpine
-
+FROM tomcat:9
+WORKDIR /usr/local/tomcat/webapps/
+COPY ./simple-app-1.0.war /usr/local/tomcat/webapps/
+CMD ["catalina.sh", "run"]
 EXPOSE 8080
-
-
-# COPY ./build/libs/my-app-1.0-SNAPSHOT.jar /usr/app/
-# WORKDIR /usr/app
-
-# ENTRYPOINT ["java", "-jar", "my-app-1.0-SNAPSHOT.jar"]
