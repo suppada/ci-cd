@@ -15,3 +15,8 @@ jobs:
       enable_release: true
     permissions:
       contents: write
+  docker_build:
+    uses: suppada/java-app/.github/workflows/docker_build.yml@main
+    with:
+      image_name: ${{ github.repository }}
+      registry: ghcr.io  # You can change this to a custom registry if needed
