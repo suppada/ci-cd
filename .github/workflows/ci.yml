@@ -39,10 +39,10 @@ jobs:
     permissions:
       contents: read
       packages: write
-  helm_chart_deployment:
-    needs: docker_build
-    uses: suppada/java-app/.github/workflows/helm_chart.yml@main
-    with:
-      registry: ghcr.io
-      chart_name: java-chart
+  # helm_chart_deployment:
+  #   needs: docker_build
+  #   uses: suppada/java-app/.github/workflows/helm_chart.yml@main
+  #   with:
+  #     registry: ghcr.io
+  #     chart_name: java-chart
       chart_version: 1.0.1
