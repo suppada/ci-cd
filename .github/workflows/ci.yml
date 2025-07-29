@@ -45,4 +45,4 @@ jobs:
   #   with:
   #     registry: ghcr.io
   #     chart_name: java-chart
-      chart_version: 1.0.1
+      # chart_version: 1.0.1
